@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import myImage from '../images/brezel.jpg';
+// import myImage from './xbrezel.jpg';
 import { Button, Wrapper } from '../css/Buttons'
 
 
@@ -11,14 +11,13 @@ import { Button, Wrapper } from '../css/Buttons'
 //   padding: '0.1em'
 // }))
 const Content = styled.div`
-  background-image: url(${myImage});
+  background-image: url(./xbrezel.jpg);
   height: 5em;
 `
 // props => props.img
 // `
 //   background-image: url(${myImage});
 // `;
-
 
 const articleData = [
   {
