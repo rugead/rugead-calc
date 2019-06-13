@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Calc from './Calc';
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import Calc from './Calc'
 import LoggedInUsers from './components/LoggedInUsers'
 import SalesPeople, {salesPeopleData} from './api/SalesPeople'
+import Articles from './api/Articles'
 import Colors from './api/Colors'
 import './style.css';
 
@@ -80,6 +81,7 @@ class App extends Component {
           onClick={this.setCurrentUserColor}
         />
         <Calc onClick={this.logUserIn} currentUserName={this.state.currentUser} />    
+        <Articles />
       </div>
     );
   }
