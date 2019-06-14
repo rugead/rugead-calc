@@ -20,13 +20,17 @@ const LoggedInUsers = (props) => {
   console.log('props', props)
   const xxx = props.loggedInUsers.map( x => 
       <div>
-            <UserInfo background={x.color || 'red'}>
+            <UserInfo 
+              key={x.number}
+              background={x.color || 'red'}
+              onClick={() => props.setCurrentUser(x)}
+            >
               Name: {x.userName}<br />
               Personalnummer: {x.number}<br />
               Farbe: {x.color || ''}
             </UserInfo>
             <Colors 
-              onClick={props.onClick}
+              setCurrentUserColor={props.setCurrentUserColor}
               userNumber={x.number}
             />
       </div>

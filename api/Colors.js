@@ -27,7 +27,7 @@ const Colors = (props) => {
       <Box 
         background={item.colorName}
         key={index} 
-        onClick={() => props.onClick(item, props.userNumber)}
+        onClick={() => props.setCurrentUserColor(item, props.userNumber)}
       />
   ) 
   return <ColorsWrapper className="colors"> { colorsList } </ColorsWrapper>

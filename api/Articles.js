@@ -9,10 +9,14 @@ import { Button, Wrapper } from '../css/Buttons'
 //   height: '5em',
 //   width: '5em',
 //   padding: '0.1em'
+  // background-image: url('https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg');
 // }))
 const Content = styled.div`
-  background-image: url(./xbrezel.jpg);
-  height: 5em;
+  background:  url(${props => props.img}) no-repeat;
+  background-size: 7em 7em ;
+  font-weight: bold;
+  height: 7em;
+  width: 7em;
 `
 // props => props.img
 // `
@@ -24,19 +28,19 @@ const articleData = [
     articleName: 'Semmel',
     articleNumber: 1000,
     articlePrice: 0.40,
-    articleImage: 'semmel.jpg'
+    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg'
   },
   {
     articleName: 'Torte',
     articleNumber: 2000,
     articlePrice: 2.50,
-    articleImage: 'torte.jpg'
+    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xtorte.jpg'
   },
   {
     articleName: 'Brezel',
     articleNumber: 3000,
     articlePrice: 0.50,
-    articleImage: 'brezel.jpg'
+    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/api/brezel.jpg'
   }
 ]
 
@@ -45,9 +49,9 @@ const Articles = (props) => {
     <Content 
       key={x.articleNumber}
       onClick={() => props.onClick(x) }
-      img={'../images/' + x.articleImage}
+      img={x.articleImage}
     >
-      {'./images/' + x.articleImage}
+      {x.articleName}
     </Content>
   )
   return <div> {articleList} </div>

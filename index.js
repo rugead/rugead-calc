@@ -17,11 +17,13 @@ class App extends Component {
     };
   }
 
-  setCurrentUserName = (item) => {
+  setCurrentUser = (item) => {
+    console.log('ää',item)
      this.setState( (state) =>   {    
        return { currentUser: {
           userName: item.userName,
-          userColor: state.currentUser.userColor,
+          userColor: item.userColor,
+          userNumber: item.userNumber
        }}
     })
   }
@@ -78,7 +80,8 @@ class App extends Component {
       <div>
         <LoggedInUsers 
           loggedInUsers={this.state.loggedInUsers} 
-          onClick={this.setCurrentUserColor}
+          setCurrentUserColor={this.setCurrentUserColor}
+          setCurrentUser={this.setCurrentUser}
         />
         <Calc onClick={this.logUserIn} currentUserName={this.state.currentUser} />    
         <Articles />
