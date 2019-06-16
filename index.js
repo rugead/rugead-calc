@@ -17,38 +17,38 @@ class App extends Component {
     };
   }
 
-  setCurrentUser = (item) => {
-    console.log('ää',item)
+  setCurrentUser = (selectedUser) => {
+    console.log('setCurrentUser: ', selectedUser)
      this.setState( (state) =>   {    
        return { currentUser: {
-          userName: item.userName,
-          userColor: item.userColor,
-          userNumber: item.userNumber
+          userName: selectedUser.userName,
+          userColor: selectedUser.color,
+          userNumber: selectedUser.number
        }}
     })
   }
 
-  logUserIn = (item) => {
+  logUserIn = (numberString) => {
     this.setState( (state) => {
-      const result = salesPeopleData.find(x => x.number === item)
-      // const result = inventory.find( fruit => fruit.name === 'cherries' );
-      if (state.loggedInUsers.find( item => item.number === item)) {
+      const result = salesPeopleData.find(item => item.number === numberString)
+      console.log('result', result)
+      if (state.loggedInUsers.find( item => item.number === numberString)) {
         const loggedInUsers = [...state.loggedInUsers ]
       } else {
         const loggedInUsers = [...state.loggedInUsers, result]
       }
-      // const list = [...state.list, state.value];
       return {loggedInUsers}
     })
   }
 
-  setCurrentUserColor = (color, userNumber) => {
-    // console.log('ccc: ', color , userNumber)
+  setUserColor = (color, userNumber) => {
+    if (userNumber === this.state.currentUser.userNumber) {
+      return
+    }
     this.setState( (state) => {
       const loggedInUsers = state.loggedInUsers.map((item, index) => {
         if (item.number === userNumber ) {
           item.color = color.colorName
-          console.log(item.number)
           return item
         } else {
           return item
@@ -58,34 +58,18 @@ class App extends Component {
     })
   }
 
-  // onUpdateItem = i => {
-  //   this.setState(state => {
-  //     const list = state.list.map((item, j) => {
-  //       if (j === i) {
-  //         return item + 1;
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-
-  //     return {
-  //       list,
-  //     };
-  //   });
-  // };
-
-
   render() {
     return (
       <div>
         <LoggedInUsers 
           loggedInUsers={this.state.loggedInUsers} 
-          setCurrentUserColor={this.setCurrentUserColor}
+          setUserColor={this.setUserColor}
           setCurrentUser={this.setCurrentUser}
         />
-        <Calc onClick={this.logUserIn} currentUserName={this.state.currentUser} />    
-        <Articles />
-      </div>
+        <Calc onClick={this.logUserIn} currentUser={this.state.currentUser} />    
+        <Articles  currentUser={this.state.currentUser}/>
+        {this.state.currentUser.userName}
+      </div> 
     );
   }
 }

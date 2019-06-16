@@ -67,14 +67,15 @@ class Calc extends Component {
 
 
   render() {
-    const {currentUserName } = this.props
+    const {currentUser } = this.props
   
     return (
       <div>
         <ErrorBoundary>
         
           <div>
-            <h3>{currentUserName.userName}</h3>
+            <h3>{currentUser.userName}</h3>
+            <h3>{currentUser.userNumber}</h3>
             <h3>Numberstring: {this.state.numberString}</h3>
             <input type="text"
               value={this.state.numberString}

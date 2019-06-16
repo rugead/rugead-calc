@@ -17,8 +17,8 @@ const UserInfo = styled.div(props => ({
 }))
 
 const LoggedInUsers = (props) => {
-  console.log('props', props)
-  const xxx = props.loggedInUsers.map( x => 
+  console.log('LoggedInUsers props: ', props)
+  const loggedinUsersList = props.loggedInUsers.map( x => 
       <div>
             <UserInfo 
               key={x.number}
@@ -30,12 +30,12 @@ const LoggedInUsers = (props) => {
               Farbe: {x.color || ''}
             </UserInfo>
             <Colors 
-              setCurrentUserColor={props.setCurrentUserColor}
+              setUserColor={props.setUserColor}
               userNumber={x.number}
             />
       </div>
     )
-  return  <LoggedInUsersWrapper> {xxx}</LoggedInUsersWrapper>
+  return  <LoggedInUsersWrapper> {loggedinUsersList}</LoggedInUsersWrapper>
 }
 
 

@@ -27,30 +27,10 @@ const Colors = (props) => {
       <Box 
         background={item.colorName}
         key={index} 
-        onClick={() => props.setCurrentUserColor(item, props.userNumber)}
+        onClick={() => props.setUserColor(item, props.userNumber)}
       />
   ) 
   return <ColorsWrapper className="colors"> { colorsList } </ColorsWrapper>
 }
 
 export default Colors
-
-
-// // Static object
-// const Box = styled.div({
-//   background: 'palevioletred',
-//   height: '50px',
-//   width: '50px'
-// });
-// // Adapting based on props
-// const PropsBox = styled.div(props => ({
-//   background: props.background,
-//   height: '50px',
-//   width: '50px'
-// }));
-// render(
-//   <div>
-//     <Box />
-//     <PropsBox background="blue" />
-//   </div>
-// );

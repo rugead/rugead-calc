@@ -1,16 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-// import myImage from './xbrezel.jpg';
 import { Button, Wrapper } from '../css/Buttons'
 
-
-// const Content = styled.div(props => ({
-//   'background-image': url(${props.img}),
-//   height: '5em',
-//   width: '5em',
-//   padding: '0.1em'
-  // background-image: url('https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg');
-// }))
 const Content = styled.div`
   background:  url(${props => props.img}) no-repeat;
   background-size: 7em 7em ;
@@ -18,10 +9,6 @@ const Content = styled.div`
   height: 7em;
   width: 7em;
 `
-// props => props.img
-// `
-//   background-image: url(${myImage});
-// `;
 
 const articleData = [
   {
@@ -44,17 +31,30 @@ const articleData = [
   }
 ]
 
-const Articles = (props) => {
-  const articleList = articleData.map( x => 
-    <Content 
-      key={x.articleNumber}
-      onClick={() => props.onClick(x) }
-      img={x.articleImage}
-    >
-      {x.articleName}
-    </Content>
-  )
-  return <div> {articleList} </div>
+function putToCart (x, props) {
+  console.log('x: ', x, 'props: ', props)
+
+}
+
+class Articles extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart:[]
+    }
+  }
+  render () {
+    const articleList = articleData.map( x => 
+      <Content 
+        key={x.articleNumber}
+        onClick={() => putToCart(x, this.props.currentUser) }
+        img={x.articleImage}
+      >
+        {x.articleName}
+      </Content>
+    )
+    return <div> {articleList} </div>
+  }
 }
 
 export default Articles
