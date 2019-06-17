@@ -27,7 +27,7 @@ const articleData = [
     articleName: 'Brezel',
     articleNumber: 3000,
     articlePrice: 0.50,
-    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xbrezel.jpg'
+    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/brezze.jpg'
   }
 ]
 
@@ -53,7 +53,7 @@ class Articles extends React.Component {
         {x.articleName}
       </Content>
     )
-    return <div> {articleList} </div>
+    return <div> <h3>Artikel</h3>{articleList} </div>
   }
 }
 

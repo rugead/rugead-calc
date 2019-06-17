@@ -91,7 +91,11 @@ class Calc extends Component {
             <Brackets onClick={this.clickBracket} />
             <DeleteLastCharacter onClick={this.clickDelete} />
             <ClearNumberString onClick={this.clickClearNumberstring} />
-            <button onClick={() => this.props.onClick(this.state.numberString)}>login</button>   
+            <button onClick={() => {
+              this.clickClearNumberstring
+              return this.props.onClick(this.state.numberString)
+            }}
+            >login</button>   
           </Wrapper>
         
         </ErrorBoundary>         

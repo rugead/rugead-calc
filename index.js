@@ -5,7 +5,7 @@ import LoggedInUsers from './components/LoggedInUsers'
 import SalesPeople, {salesPeopleData} from './api/SalesPeople'
 import Articles from './api/Articles'
 import Colors from './api/Colors'
-import './style.css';
+import './css/style.css';
 
 class App extends Component {
   constructor() {
@@ -60,14 +60,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <LoggedInUsers 
+      <div className="main">
+        <LoggedInUsers
+          className="logged-in-users"
           loggedInUsers={this.state.loggedInUsers} 
           setUserColor={this.setUserColor}
           setCurrentUser={this.setCurrentUser}
         />
-        <Calc onClick={this.logUserIn} currentUser={this.state.currentUser} />    
-        <Articles  currentUser={this.state.currentUser}/>
+        <Calc className="calc" onClick={this.logUserIn} currentUser={this.state.currentUser} />    
+        <Articles  className="articles" currentUser={this.state.currentUser}/>
         {this.state.currentUser.userName}
       </div> 
     );

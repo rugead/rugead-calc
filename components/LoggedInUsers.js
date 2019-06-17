@@ -6,7 +6,6 @@ import Colors from './../api/Colors'
 const LoggedInUsersWrapper = styled.div(props => ({
   background: props.background,
   border: 'solid 1px black',
-  // height: '4em',
   width: '12em',
   padding: '0.1em'
 }))
@@ -17,12 +16,11 @@ const UserInfo = styled.div(props => ({
 }))
 
 const LoggedInUsers = (props) => {
-  console.log('LoggedInUsers props: ', props)
+  // console.log('LoggedInUsers props: ', props)
   const loggedinUsersList = props.loggedInUsers.map( x => 
-      <div>
+      <div key={x.number}>
             <UserInfo 
-              key={x.number}
-              background={x.color || 'red'}
+              background={x.color || ''}
               onClick={() => props.setCurrentUser(x)}
             >
               Name: {x.userName}<br />
@@ -35,7 +33,10 @@ const LoggedInUsers = (props) => {
             />
       </div>
     )
-  return  <LoggedInUsersWrapper> {loggedinUsersList}</LoggedInUsersWrapper>
+  return  <LoggedInUsersWrapper> 
+            <h3>angemeldete Bediener</h3>
+            {loggedinUsersList}
+          </LoggedInUsersWrapper>
 }
 
 
