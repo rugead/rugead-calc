@@ -27,7 +27,7 @@ const articleData = [
     articleName: 'Brezel',
     articleNumber: 3000,
     articlePrice: 0.50,
-    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/api/brezel.jpg'
+    articleImage: 'https://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xbrezel.jpg'
   }
 ]
 
