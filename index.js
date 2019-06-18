@@ -67,7 +67,7 @@ class App extends Component {
           setUserColor={this.setUserColor}
           setCurrentUser={this.setCurrentUser}
         />
-        <Calc className="calc" onClick={this.logUserIn} currentUser={this.state.currentUser} />    
+        <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
         <Articles  className="articles" currentUser={this.state.currentUser}/>
         {this.state.currentUser.userName}
       </div> 

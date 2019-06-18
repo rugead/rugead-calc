@@ -55,6 +55,12 @@ class Calc extends Component {
 
   clickClearNumberstring = () => {
     this.setState( { numberString: '' } )
+
+  }
+
+  logUserIn = () => {
+    props.logUserIn(this.state.numberString)
+    this.setState( { numberString: '' } )
   }
 
   // clickPeriod = (period) => {
@@ -86,16 +92,12 @@ class Calc extends Component {
           </div>
 
           <Wrapper>
+            <button onClick={ this.logUserIn  } >login</button>   
             <Numbers onClick={this.clickNumber}/>
             <Operators onClick={this.clickOperator} />
             <Brackets onClick={this.clickBracket} />
             <DeleteLastCharacter onClick={this.clickDelete} />
             <ClearNumberString onClick={this.clickClearNumberstring} />
-            <button onClick={() => {
-              this.clickClearNumberstring
-              return this.props.onClick(this.state.numberString)
-            }}
-            >login</button>   
           </Wrapper>
         
         </ErrorBoundary>         
