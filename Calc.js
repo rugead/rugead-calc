@@ -77,18 +77,15 @@ class Calc extends Component {
   
     return (
       <div>
-        <ErrorBoundary>
-        
+        <ErrorBoundary>        
           <div>
-            <h3>{currentUser.userName}</h3>
-            <h3>{currentUser.userNumber}</h3>
-            <h3>Numberstring: {this.state.numberString}</h3>
+            <h3>Aktiver Bediener: {currentUser.userName}</h3>
             <input type="text"
               value={this.state.numberString}
-              placeholder="do math" 
+              placeholder="Eingabe" 
               onChange={this.inputOnChange}
             />
-              <h2><Ergebnis numberString={this.state.numberString} /> </h2>
+              <h2>Ergebins: <Ergebnis numberString={this.state.numberString} /> </h2>
           </div>
 
           <Wrapper>
