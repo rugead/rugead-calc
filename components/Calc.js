@@ -8,7 +8,7 @@ import ErrorBoundary from './ErrorBoundary'
 import Period from './Period'
 import Ergebnis from './Ergebnis'
 import styled from 'styled-components'
-import { Button, Wrapper, Box, CurrentUserWrapper } from './../css/Buttons'
+import { Button, Wrapper, Box, CurrentUserWrapper, Input } from './../css/Buttons'
 
 class Calc extends Component {
   constructor(props) {
@@ -63,15 +63,6 @@ class Calc extends Component {
     this.setState( { numberString: '' } )
   }
 
-  // clickPeriod = (period) => {
-  //   (this.state.numberString.length > 0 )
-  //   ? 
-  //   this.setState( { numberString: this.state.numberString.concat(period) } )
-  //   :
-  //   this.setState( { numberString: this.state.numberString.concat(0, period) } )
-  // }
-
-
   render() {
     const {currentUser } = this.props
   
@@ -88,9 +79,9 @@ class Calc extends Component {
               clearNumberstring={this.clickClearNumberstring}
               deleteLastCharacter={this.clickDelete}
             />
-        
           </Wrapper>
-            <input type="text"
+
+            <Input type="text"
               value={this.state.numberString}
               placeholder="Eingabe" 
               onChange={this.inputOnChange}

@@ -50,4 +50,15 @@ const CurrentUserWrapper = styled.div(props => ({
 
 })) 
 
-export { Button, Wrapper, Box, CurrentUserWrapper, Board }
+const Input = styled.input`
+  padding: 0em;
+  border: solid 1px grey;
+  background: darkorange;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-item: stretch;
+
+`;
+
+export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input }
