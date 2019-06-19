@@ -76,26 +76,26 @@ class Calc extends Component {
     const {currentUser } = this.props
   
     return (
-      <div>
+      <div className="calc">
         <ErrorBoundary>        
           <div>
-            <h3>Aktiver Bediener: {currentUser.userName}</h3>
-            <input type="text"
-              value={this.state.numberString}
-              placeholder="Eingabe" 
-              onChange={this.inputOnChange}
-            />
-              <h2>Ergebins: <Ergebnis numberString={this.state.numberString} /> </h2>
+            <h3>Aktiver Bediener: {currentUser.userName || "kein aktiver Bediener"}</h3>
           </div>
-
           <Wrapper>
-            <button onClick={ this.logUserIn  } >login</button>   
+
             <Numbers onClick={this.clickNumber}/>
             <Operators onClick={this.clickOperator} />
             <Brackets onClick={this.clickBracket} />
             <DeleteLastCharacter onClick={this.clickDelete} />
             <ClearNumberString onClick={this.clickClearNumberstring} />
           </Wrapper>
+            <input type="text"
+              value={this.state.numberString}
+              placeholder="Eingabe" 
+              onChange={this.inputOnChange}
+            />
+            <Button onClick={ this.logUserIn  } >login</Button>   
+            <h3>Ergebnis: <Ergebnis numberString={this.state.numberString} /> </h3>
         
         </ErrorBoundary>         
       </div>

@@ -7,6 +7,8 @@ import Articles from './api/Articles'
 import Colors from './api/Colors'
 import './css/style.css';
 
+import { Button, Wrapper } from './css/Buttons'
+
 class App extends Component {
   constructor() {
     super();
@@ -69,7 +71,6 @@ class App extends Component {
         />
         <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
         <Articles  className="articles" currentUser={this.state.currentUser}/>
-        {this.state.currentUser.userName}
       </div> 
     );
   }

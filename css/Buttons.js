@@ -21,7 +21,8 @@ const Button = styled.button`
 
 const Wrapper = styled.div`
   padding: 0.5em;
-  background: darkblue;
+  // border: solid 1px grey;
+  background: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
