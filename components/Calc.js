@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import Numbers from './components/Numbers'
-import Operators from './components/Operators'
-import Brackets from './components/Brackets'
-import DeleteLastCharacter from './components/DeleteLastCharacter'
-import ClearNumberString from './components/ClearNumberString'
-import ErrorBoundary from './components/ErrorBoundary'
-import Period from './components/Period'
-import Ergebnis from './components/Ergebnis'
-
-import { Button, Wrapper } from './css/Buttons'
+import Numbers from './Numbers'
+import Operators from './Operators'
+import Brackets from './Brackets'
+import DeleteLastCharacter from './DeleteLastCharacter'
+import ClearNumberString from './ClearNumberString'
+import ErrorBoundary from './ErrorBoundary'
+import Period from './Period'
+import Ergebnis from './Ergebnis'
+import styled from 'styled-components'
+import { Button, Wrapper, Box, CurrentUserWrapper } from './../css/Buttons'
 
 class Calc extends Component {
   constructor(props) {
@@ -76,11 +76,9 @@ class Calc extends Component {
     const {currentUser } = this.props
   
     return (
-      <div className="calc">
+      <CurrentUserWrapper background={currentUser.userColor}>
         <ErrorBoundary>        
-          <div>
-            <h3>Aktiver Bediener: {currentUser.userName || "kein aktiver Bediener"}</h3>
-          </div>
+            <h3> {currentUser.userName || "kein aktiver Bediener"}</h3>
           <Wrapper>
 
             <Numbers onClick={this.clickNumber}/>
@@ -98,7 +96,8 @@ class Calc extends Component {
             <h3>Ergebnis: <Ergebnis numberString={this.state.numberString} /> </h3>
         
         </ErrorBoundary>         
-      </div>
+      </CurrentUserWrapper>
+      
     )
   }
 }

@@ -5,26 +5,39 @@ import { Button, Wrapper } from '../css/Buttons'
 const ColorsWrapper = styled(Wrapper)`
   // flex-direction: column;
   background-color: white;
-  width: 6em;
+  align-content:stretch;
+  align-item:stretch;
+  padding: 0em 0em 0.5em 0em;
 `;
 
-const Box = styled.div(props => ({
+const ColorBox = styled.div(props => ({
   background: props.background,
   height: '1em',
   width: '1em',
-  padding: '0.1em'
+  padding: '0em',
+  order: '0',
+  flex: '1 1 auto',
+  'align-self': 'auto'	
 }))
 
 const colorsData = [
   {colorName: 'tomato'},
-  {colorName: 'darkblue'},
+  {colorName: 'aqua'},
   {colorName: 'darkorange'},
-  {colorName: 'deeppink'}
+  {colorName: 'deeppink'},
+  {colorName: 'Chartreuse'},
+  {colorName: 'Turquoise'},
+  {colorName: 'Yellow'},
+  {colorName: 'Gold'},
 ]
 
+ 
+ 
+ 
+ 
 const Colors = (props) => {
   const colorsList = colorsData.map((item, index) =>
-      <Box 
+      <ColorBox 
         background={item.colorName}
         key={index} 
         onClick={() => props.setUserColor(item, props.userNumber)}

@@ -3,11 +3,9 @@ import styled from 'styled-components'
 import { Button, Wrapper } from '../css/Buttons'
 
 const NummbersWrapper = styled(Wrapper)`
-  flex-direction: row;
-  background-color: darkgreen;
-  // flex-wrap: nowrap;
-  // flex: 1 1 auto;
-  width: 12em;
+  align-content: center;
+  align-item: center;
+  width: 10em;
 `;
 
 

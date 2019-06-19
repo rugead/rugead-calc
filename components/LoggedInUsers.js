@@ -5,13 +5,11 @@ import Colors from './../api/Colors'
 
 const LoggedInUsersWrapper = styled.div(props => ({
   background: props.background,
-  border: 'solid 1px black',
-  width: '20em',
-  padding: '0.5em'
+  width: '12em',
 }))
 
 const UserInfo = styled.div(props => ({
-  padding: '0em',
+  padding: '0em 0em 1em 0em',
   background: props.background
 }))
 
@@ -23,14 +21,15 @@ const LoggedInUsers = (props) => {
         background={x.color || ''}
         onClick={() => props.setCurrentUser(x)}
       >
-        Name:<br />{x.userName}
-        Personalnummer:<br />{x.number}
-        Farbe:<br />{x.color || ''}
+        Name: {x.userName}<br />
+        Nr: {x.number}<br />
+        Farbe: {x.color || 'bitte wählen'}<br />
       </UserInfo>
-      <Colors 
-        setUserColor={props.setUserColor}
-        userNumber={x.number}
-      />
+
+        <Colors 
+          setUserColor={props.setUserColor}
+          userNumber={x.number}
+        />
     </div>
     )
   return  <LoggedInUsersWrapper> 

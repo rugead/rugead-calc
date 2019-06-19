@@ -4,7 +4,7 @@ import { Button, Wrapper } from '../css/Buttons'
 const Period = (props) => {
   return (
     <Wrapper className="period-board">
-      <Button className="period" onClick={ () => props.onClick('.')}> . </Button>
+      <Button className="period" onClick={ () => props.onClick('.')}> sss. </Button>
     </Wrapper>
   )
 }

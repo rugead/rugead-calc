@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Calc from './Calc'
+import Calc from './components/Calc'
 import LoggedInUsers from './components/LoggedInUsers'
 import SalesPeople, {salesPeopleData} from './api/SalesPeople'
 import Articles from './api/Articles'
 import Colors from './api/Colors'
 import './css/style.css';
 
-import { Button, Wrapper } from './css/Buttons'
+import { Button, Wrapper, Box } from './css/Buttons'
 
 class App extends Component {
   constructor() {
@@ -63,14 +63,19 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-        <LoggedInUsers
-          className="logged-in-users"
-          loggedInUsers={this.state.loggedInUsers} 
-          setUserColor={this.setUserColor}
-          setCurrentUser={this.setCurrentUser}
-        />
-        <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
-        <Articles  className="articles" currentUser={this.state.currentUser}/>
+        <Box>
+          <LoggedInUsers
+            loggedInUsers={this.state.loggedInUsers} 
+            setUserColor={this.setUserColor}
+            setCurrentUser={this.setCurrentUser}
+          />
+        </Box>
+        <Box>
+          <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
+        </Box>
+        <Box>
+          <Articles  className="articles" currentUser={this.state.currentUser}/>
+        </Box>    
       </div> 
     );
   }
