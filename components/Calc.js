@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Numbers from './Numbers'
 import Operators from './Operators'
-import Brackets from './Brackets'
+import SpecialOperators from './SpecialOperators'
 import DeleteLastCharacter from './DeleteLastCharacter'
-import ClearNumberString from './ClearNumberString'
+// import ClearNumberString from './ClearNumberString'
 import ErrorBoundary from './ErrorBoundary'
 import Period from './Period'
 import Ergebnis from './Ergebnis'
@@ -83,9 +83,12 @@ class Calc extends Component {
 
             <Numbers onClick={this.clickNumber}/>
             <Operators onClick={this.clickOperator} />
-            <Brackets onClick={this.clickBracket} />
-            <DeleteLastCharacter onClick={this.clickDelete} />
-            <ClearNumberString onClick={this.clickClearNumberstring} />
+            <SpecialOperators 
+              bracket={this.clickBracket}
+              clearNumberstring={this.clickClearNumberstring}
+              deleteLastCharacter={this.clickDelete}
+            />
+        
           </Wrapper>
             <input type="text"
               value={this.state.numberString}

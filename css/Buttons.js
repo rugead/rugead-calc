@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const Board = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Button = styled.button`
   font-weight: bold;
   background: transparent;
@@ -45,4 +50,4 @@ const CurrentUserWrapper = styled.div(props => ({
 
 })) 
 
-export { Button, Wrapper, Box, CurrentUserWrapper }
+export { Button, Wrapper, Box, CurrentUserWrapper, Board }
