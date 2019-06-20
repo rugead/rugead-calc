@@ -33,7 +33,7 @@ const LoggedInUsers = (props) => {
     </div>
     )
   return  <LoggedInUsersWrapper> 
-            {<h3>keine Bediener angemeldet</h3> || loggedinUsersList}
+            { loggedinUsersList || "kein Bediener angemeldet"}
           </LoggedInUsersWrapper>
 }
 

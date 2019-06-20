@@ -33,7 +33,7 @@ class App extends Component {
   logUserIn = (numberString) => {
     this.setState( (state) => {
       const result = salesPeopleData.find(item => item.number === numberString)
-      console.log('result', result)
+      // console.log('result', result)
       if (state.loggedInUsers.find( item => item.number === numberString)) {
         const loggedInUsers = [...state.loggedInUsers ]
       } else {

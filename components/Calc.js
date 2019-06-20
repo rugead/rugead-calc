@@ -70,6 +70,7 @@ class Calc extends Component {
       <CurrentUserWrapper background={currentUser.userColor}>
         <ErrorBoundary>        
             <h3> {currentUser.userName || "kein aktiver Bediener"}</h3>
+            <Button onClick={ this.logUserIn  } >login</Button>   
           <Wrapper>
 
             <Numbers onClick={this.clickNumber}/>
@@ -80,14 +81,17 @@ class Calc extends Component {
               deleteLastCharacter={this.clickDelete}
             />
           </Wrapper>
-
+          <Wrapper>
             <Input type="text"
               value={this.state.numberString}
               placeholder="Eingabe" 
               onChange={this.inputOnChange}
             />
-            <Button onClick={ this.logUserIn  } >login</Button>   
+          </Wrapper>
+          <Wrapper>
+
             <h3>Ergebnis: <Ergebnis numberString={this.state.numberString} /> </h3>
+          </Wrapper>
         
         </ErrorBoundary>         
       </CurrentUserWrapper>
