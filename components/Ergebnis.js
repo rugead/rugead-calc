@@ -13,7 +13,7 @@ function Ergebnis(props) {
   }
 
   return (
-    <Result> {ergebnis} </Result>
+    <Result>= {ergebnis} </Result>
   )
 }
 

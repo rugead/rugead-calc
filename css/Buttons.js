@@ -52,6 +52,7 @@ const CurrentUserWrapper = styled.div(props => ({
 
 const Input = styled.input`
   font-weight: bold;
+  color: grey;
   padding: 0.5em;
   flex: 1 1 auto;
   font-size: 1.5em;
