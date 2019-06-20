@@ -89,8 +89,7 @@ class Calc extends Component {
             />
           </Wrapper>
           <Wrapper>
-
-            <h3>Ergebnis: <Ergebnis numberString={this.state.numberString} /> </h3>
+            <Ergebnis numberString={this.state.numberString} />
           </Wrapper>
         
         </ErrorBoundary>         

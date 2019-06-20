@@ -1,5 +1,7 @@
 import React from 'react'
 import * as math from  'mathjs' 
+import { Button, Wrapper, Box, CurrentUserWrapper, Input, Result } from './../css/Buttons'
+
 
 function Ergebnis(props) {
   try {
@@ -7,11 +9,11 @@ function Ergebnis(props) {
   }
   catch {
     const regexLastCharacter = RegExp('[+-/*]$')
-    const ergebnis = (regexLastCharacter.test(props.numberString)) ? props.numberString : 'Da was stimmt hier nicht: ' + props.numberString
+    const ergebnis = (regexLastCharacter.test(props.numberString)) ? props.numberString : '!hier stimmt was nicht! ' + props.numberString
   }
 
   return (
-    <span> {ergebnis} </span>
+    <Result> {ergebnis} </Result>
   )
 }
 

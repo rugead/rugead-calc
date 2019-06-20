@@ -54,10 +54,19 @@ const Input = styled.input`
   font-weight: bold;
   padding: 0.5em;
   flex: 1 1 auto;
-  padding: 0em;
+  font-size: 1.5em;
+  border: solid 1px grey;
+  background: white;
+  align-self: auto;
+`;
+
+const Result = styled.div`
+  font-weight: bold;
+  padding: 0.5em;
+  flex: 1 1 auto;
+  font-size: 1.5em;
   border: solid 1px grey;
   background: darkorange;
   align-self: auto;
 `;
-
-export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input }
+export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input, Result }
