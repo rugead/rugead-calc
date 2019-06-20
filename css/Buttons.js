@@ -32,7 +32,6 @@ const Wrapper = styled.div`
   background: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const Box = styled.div`
@@ -46,19 +45,17 @@ const Box = styled.div`
 `;
 
 const CurrentUserWrapper = styled.div(props => ({
- background: props.background,
-
+  background: props.background,
+  'align-content':'stretch',
+  'align-item':'stretch',
 })) 
 
 const Input = styled.input`
+  flex: 1 1 auto;
   padding: 0em;
   border: solid 1px grey;
   background: darkorange;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-item: stretch;
-
+  align-self: auto;
 `;
 
 export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input }

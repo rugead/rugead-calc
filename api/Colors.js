@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button, Wrapper } from '../css/Buttons'
 
-const ColorsWrapper = styled(Wrapper)`
-  // flex-direction: column;
-  background-color: white;
-  align-content:stretch;
-  align-item:stretch;
-  padding: 0em 0em 0.5em 0em;
-`;
+const ColorsWrapper = styled(Wrapper)(props => ({
+  'background-color': 'white',
+  'align-content': 'stretch',
+  'align-item': 'stretch',
+  padding: '0em 0em 0.5em 0em',
+
+}))
 
 const ColorBox = styled.div(props => ({
   background: props.background,
