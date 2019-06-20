@@ -9,7 +9,7 @@ function Ergebnis(props) {
   }
   catch {
     const regexLastCharacter = RegExp('[+-/*]$')
-    const ergebnis = (regexLastCharacter.test(props.numberString)) ? props.numberString : '!hier stimmt was nicht! ' + props.numberString
+    const ergebnis = (regexLastCharacter.test(props.numberString)) ? props.numberString : 'hier stimmt was nicht: ' + props.numberString
   }
 
   return (

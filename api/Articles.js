@@ -31,11 +31,6 @@ const articleData = [
   }
 ]
 
-function putToCart (x, props) {
-  console.log('x: ', x, 'props: ', props)
-
-}
-
 class Articles extends React.Component {
   constructor(props) {
     super(props);
@@ -43,17 +38,26 @@ class Articles extends React.Component {
       cart:[]
     }
   }
+
+  putToCart = (x, props) => {
+    console.log('x: ', x, 'props: ', props)
+    this.setState(state => {
+      const cart = x
+      return x
+    })
+  }
+
   render () {
     const articleList = articleData.map( x => 
       <Content 
         key={x.articleNumber}
-        onClick={() => putToCart(x, this.props.currentUser) }
+        onClick={() => this.putToCart(x, this.props.currentUser) }
         img={x.articleImage}
       >
         {x.articleName}
       </Content>
     )
-    return <div> <h3>Artikel</h3>{articleList} </div>
+    return <div> <h3>Artikel</h3>{articleList}, {this.state.cart[0]} </div>
   }
 }
 
