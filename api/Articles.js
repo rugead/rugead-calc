@@ -42,12 +42,24 @@ class Articles extends React.Component {
   putToCart = (x, props) => {
     console.log('x: ', x, 'props: ', props)
     this.setState((state, props) => {
+      const obj = {
+        articleName: "Torte",
+        articleNumber: 2000,
+        articlePrice: 2,
+        userName: props.currentUser,
+        userNumber: "1111",
+      }
       const cart = [...state.cart, x]
       return {cart}
     })
   }
 
   render () {
+    const cart = this.state.cart.map(x => 
+      <div>
+        {x.articleName}-{x.articlePrice}
+      </div>
+    )
     const articleList = articleData.map( x => 
       <Content 
         key={x.articleNumber}
@@ -57,7 +69,11 @@ class Articles extends React.Component {
         {x.articleName}
       </Content>
     )
-    return <div> <h3>Artikel</h3>{articleList}, {console.log(this.state.cart)} </div>
+    return <div> 
+            {cart}
+            <h3>Artikel</h3>
+            {articleList}{console.log(this.state.cart)}
+          </div>
   }
 }
 
