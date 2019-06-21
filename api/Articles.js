@@ -41,9 +41,9 @@ class Articles extends React.Component {
 
   putToCart = (x, props) => {
     console.log('x: ', x, 'props: ', props)
-    this.setState(state => {
-      const cart = x
-      return x
+    this.setState((state, props) => {
+      const cart = [...state.cart, x]
+      return {cart}
     })
   }
 
@@ -57,7 +57,7 @@ class Articles extends React.Component {
         {x.articleName}
       </Content>
     )
-    return <div> <h3>Artikel</h3>{articleList}, {this.state.cart[0]} </div>
+    return <div> <h3>Artikel</h3>{articleList}, {console.log(this.state.cart)} </div>
   }
 }
 
