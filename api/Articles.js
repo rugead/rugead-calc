@@ -10,6 +10,7 @@ const Content = styled.div`
   width: 7em;
 `
 
+
 const articleData = [
   {
     articleName: 'Semmel',
@@ -49,12 +50,21 @@ class Articles extends React.Component {
         articleNumber: article.articleNumber,
         articlePrice: article.articlePrice,
         articleQuantity: '',
+        articleSum:'',
         userName: props.currentUser.userNumber,
         userNumber: props.currentUser.userNumber,
 
       }
-      const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
-      const cart = [...state.cart, obj]
+      // const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
+      const checkCart = this.state.cart.map(cartItem => {
+        if ( cartItem.articleNumber === article.articleNumber) {
+          cartItem.articleQuantity =  cartItem.articleQuantity +1,
+          cartItem.articleSum = cartItem.articlePrice * cartItem.articleQuantity
+          return cartItem
+        } else {
+          return cartItem
+        }
+      })
       return {cart}
     })
   }
@@ -62,7 +72,7 @@ class Articles extends React.Component {
   render () {
     const cart = this.state.cart.map(x => 
       <div>
-        {x.articleName}-{x.articlePrice}
+        {x.articleName}-{x.articlePrice} 
       </div>
     )
     const articleList = articleData.map( article => 
