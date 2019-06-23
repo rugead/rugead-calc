@@ -38,18 +38,23 @@ class Articles extends React.Component {
       cart:[]
     }
   }
+  // props: {userName: "verkäufer eins", userColor: "", userNumber: "1111"}
+  // {articleName: "Semmel", articleNumber: 1000, articlePrice: 0.4, articleImage: ttps://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg"…}
 
-  putToCart = (x, props) => {
-    console.log('x: ', x, 'props: ', props)
+  putToCart = (article) => {
     this.setState((state, props) => {
+    console.log('state: ',state, 'props: ', props, 'article: ', article)
       const obj = {
-        articleName: "Torte",
-        articleNumber: 2000,
-        articlePrice: 2,
-        userName: props.currentUser,
-        userNumber: "1111",
+        articleName: article.articleName,
+        articleNumber: article.articleNumber,
+        articlePrice: article.articlePrice,
+        articleQuantity: '',
+        userName: props.currentUser.userNumber,
+        userNumber: props.currentUser.userNumber,
+
       }
-      const cart = [...state.cart, x]
+      const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
+      const cart = [...state.cart, obj]
       return {cart}
     })
   }
@@ -60,13 +65,13 @@ class Articles extends React.Component {
         {x.articleName}-{x.articlePrice}
       </div>
     )
-    const articleList = articleData.map( x => 
+    const articleList = articleData.map( article => 
       <Content 
-        key={x.articleNumber}
-        onClick={() => this.putToCart(x, this.props.currentUser) }
-        img={x.articleImage}
+        key={article.articleNumber}
+        onClick={() => this.putToCart(article) }
+        img={article.articleImage}
       >
-        {x.articleName}
+        {article.articleName}
       </Content>
     )
     return <div> 
