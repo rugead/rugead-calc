@@ -62,25 +62,10 @@ class Articles extends React.Component {
         userNumber: props.currentUser.userNumber,
 
       }
-      // const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
-      console.log('result: ', this.state.cart.find(cartItem => {
-        console.log('cartitem: ', cartItem)
-        return cartItem.articleNumber === article.articleNumber
-        }))
-      if (this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)) {
-        const cart = this.state.cart.map(x => {
-          if (x.articleNumber === article.articleNumber) {
-            x.articleQuantity = x.articleQuantity + 1,
-            x.articleSum = format(x.articlePrice * x.articleQuantity)
-            console.log('cart: ', cart)
-            return x
-          }
-        })
-      } else {
-        const cart = [...state.cart, newCartItem]
-        console.log('cart2: ', cart)
-      }
-      // result = []
+      const cart = [...state.cart, newCartItem]
+      console.log('newCartItem: ', newCartItem)
+      console.log('cart2: ', cart)
+
       return {cart}
     })
   }
@@ -95,10 +80,12 @@ class Articles extends React.Component {
         {article.articleName}
       </Content>
     )
+    const warenkorb = this.state.cart.map(x => {
+              return x.articleName
+            })
     return <div> 
-            {this.state.cart.map(x => {
-              <div> </div>
-            })}     
+
+  warenkorb:  {console.log('cart: ', warenkorb)}     
             <h3>Artikel</h3>
             {articleList}
           </div>
