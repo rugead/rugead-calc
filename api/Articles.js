@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Wrapper } from '../css/Buttons'
+import math from 'mathjs'
 
 const Content = styled.div`
   background:  url(${props => props.img}) no-repeat;
@@ -32,6 +33,11 @@ const articleData = [
   }
 ]
 
+function format (value) {
+  const precision = 2
+  return math.format(value, {notation: 'fixed', precision: 2})
+}
+
 class Articles extends React.Component {
   constructor(props) {
     super(props);
@@ -39,43 +45,41 @@ class Articles extends React.Component {
       cart:[]
     }
   }
+
   // props: {userName: "verkäufer eins", userColor: "", userNumber: "1111"}
   // {articleName: "Semmel", articleNumber: 1000, articlePrice: 0.4, articleImage: ttps://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg"…}
 
   putToCart = (article) => {
     this.setState((state, props) => {
-    console.log('state: ',state, 'props: ', props, 'article: ', article)
+      // console.log('state: ',state, 'props: ', props, 'article: ', article)
       const obj = {
         articleName: article.articleName,
         articleNumber: article.articleNumber,
         articlePrice: article.articlePrice,
-        articleQuantity: '',
-        articleSum:'',
+        articleQuantity: 1 ,
+        articleSum: article.articlePrice,
         userName: props.currentUser.userNumber,
         userNumber: props.currentUser.userNumber,
 
       }
+
       const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
-      console.log('result: ', result)
-      
+      console.log('result: ',  this.state.cart)
       if (result) {
-        const cart = [...state.cart ]
+        const cart = this.state.cart.map(x => {
+          if (x.articleNumber === article.articleNumber) {
+            x.articleQuantity = x.articleQuantity + 1,
+            x.articleSum = format(x.articlePrice * x.articleQuantity)
+            console.log('cart: ', cart)
+            return x
+          }
+        })
       } else {
         const cart = [...state.cart, obj]
+        console.log('cart2: ', cart)
       }
+
       return {cart}
-
-      // const checkCart = this.state.cart.reduce((acc, curr) => {
-
-      //   if ( cartItem.articleNumber === article.articleNumber) {
-      //     cartItem.articleQuantity =  cartItem.articleQuantity +1,
-      //     cartItem.articleSum = cartItem.articlePrice * cartItem.articleQuantity
-      //     return cartItem
-      //   } else {
-      //     return cartItem
-      //   }
-      // })
- 
     })
   }
 
@@ -90,9 +94,11 @@ class Articles extends React.Component {
       </Content>
     )
     return <div> 
-       
+            {this.state.cart.map(x => {
+              <div> </div>
+            })}     
             <h3>Artikel</h3>
-            {articleList}{console.log(this.state.cart)}
+            {articleList}
           </div>
   }
 }
