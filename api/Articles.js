@@ -45,14 +45,14 @@ class Articles extends React.Component {
       cart:[]
     }
   }
-
+  
   // props: {userName: "verkäufer eins", userColor: "", userNumber: "1111"}
   // {articleName: "Semmel", articleNumber: 1000, articlePrice: 0.4, articleImage: ttps://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg"…}
 
   putToCart = (article) => {
     this.setState((state, props) => {
-      // console.log('state: ',state, 'props: ', props, 'article: ', article)
-      const obj = {
+      console.log('state: ',state, 'props: ', props, 'article: ', article)
+      const newCartItem = {
         articleName: article.articleName,
         articleNumber: article.articleNumber,
         articlePrice: article.articlePrice,
@@ -62,10 +62,12 @@ class Articles extends React.Component {
         userNumber: props.currentUser.userNumber,
 
       }
-
-      const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
-      console.log('result: ',  this.state.cart)
-      if (result) {
+      // const result = this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)
+      console.log('result: ', this.state.cart.find(cartItem => {
+        console.log('cartitem: ', cartItem)
+        return cartItem.articleNumber === article.articleNumber
+        }))
+      if (this.state.cart.find(cartItem => cartItem.articleNumber === article.articleNumber)) {
         const cart = this.state.cart.map(x => {
           if (x.articleNumber === article.articleNumber) {
             x.articleQuantity = x.articleQuantity + 1,
@@ -75,10 +77,10 @@ class Articles extends React.Component {
           }
         })
       } else {
-        const cart = [...state.cart, obj]
+        const cart = [...state.cart, newCartItem]
         console.log('cart2: ', cart)
       }
-
+      // result = []
       return {cart}
     })
   }
