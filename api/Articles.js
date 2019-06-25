@@ -51,7 +51,14 @@ class Articles extends React.Component {
 
   putToCart = (article) => {
     this.setState((state, props) => {
-      console.log('state: ',state, 'props: ', props, 'article: ', article)
+      // console.log('state: ',state, 'props: ', props, 'article: ', article)
+      const newCart = {
+        userName: props.currentUser.userNumber,
+        userNumber: props.currentUser.userNumber,
+        id: props.currentUser.userNumber + '#' + Date.now() ,
+        timeStamp: Date.now(),
+        articles: []
+      }
       const newCartItem = {
         articleName: article.articleName,
         articleNumber: article.articleNumber,
@@ -60,12 +67,12 @@ class Articles extends React.Component {
         articleSum: article.articlePrice,
         userName: props.currentUser.userNumber,
         userNumber: props.currentUser.userNumber,
-
+        id: props.currentUser.userNumber + '#' + Date.now() ,
+        timeStamp: Date.now(),
       }
       const cart = [...state.cart, newCartItem]
-      console.log('newCartItem: ', newCartItem)
-      console.log('cart2: ', cart)
-
+      // console.log('newCartItem: ', newCartItem)
+      // console.log('cart2: ', cart)
       return {cart}
     })
   }
