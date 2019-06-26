@@ -77,9 +77,8 @@ class App extends Component {
   }
 
  putToCart = (article) => {
-   //find 
     this.setState((state, props) => {
-      console.log('state: ',state, 'props: ', props, 'article: ', article)
+      // console.log('state: ',state, 'props: ', props, 'article: ', article)
       const newCartItem = {
         articleName: article.articleName,
         articleNumber: article.articleNumber,
@@ -92,15 +91,14 @@ class App extends Component {
         timeStamp: Date.now(),
       }
       const cart = state.cart.map((item, index) => {
-        console.log('item.userNumber: ', item.userNumber)
-        console.log('this.state.currentUser.userNumber: ', this.state.currentUser.userNumber)
+        // console.log('item.userNumber: ', item.userNumber)
+        // console.log('this.state.currentUser.userNumber: ', this.state.currentUser.userNumber)
         if (item.userNumber === this.state.currentUser.userNumber) {
-          // [...state.loggedInUsers, result]
           item.articles = item.articles.concat(newCartItem) 
-          console.log('item1', item.articles, newCartItem)
+          // console.log('item1', item.articles, newCartItem)
           return item
         } else {
-          console.log('item2', item)
+          // console.log('item2', item)
           return item
         }
       })
@@ -111,9 +109,6 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-      {console.log('Cart: ', this.state.cart, )}
-      {console.log('CurrentUser: ', this.state.currentUser, )}
-
         <Box>
           <LoggedInUsers
             loggedInUsers={this.state.loggedInUsers} 
