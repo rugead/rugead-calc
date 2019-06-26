@@ -6,8 +6,34 @@ import SalesPeople, {salesPeopleData} from './api/SalesPeople'
 import Articles from './api/Articles'
 import Colors from './api/Colors'
 import './css/style.css';
+import math from 'mathjs'
 
-import { Button, Wrapper, Box } from './css/Buttons'
+import { Button, Wrapper, Box, CartRow , CartList} from './css/Buttons'
+
+function format (value) {
+  const precision = 2
+  return math.format(value, {notation: 'fixed', precision: 2})
+}
+
+const CartDisplay = (props) => {
+  const getCurrentUserCart = props.cart.find(cartUser => cartUser.userNumber === props.currentUser.userNumber)
+  const cartList = !getCurrentUserCart ? '' :  getCurrentUserCart.articles.map(article => {
+          return <CartRow background={props.currentUser.userColor}>{article.articleQuantity} x {article.articleName} {format(article.articlePrice)} </CartRow>
+
+  })      
+  return <CartList background={props.currentUser.userColor}> {cartList}</CartList>
+}
+
+const Colors = (props) => {
+  const colorsList = colorsData.map((item, index) =>
+      <ColorBox 
+        background={item.colorName}
+        key={index} 
+        onClick={() => props.setUserColor(item, props.userNumber)}
+      />
+  ) 
+  return <ColorsWrapper className="colors"> { colorsList } </ColorsWrapper>
+}
 
 class App extends Component {
   constructor() {
@@ -84,7 +110,7 @@ class App extends Component {
 
  putToCart = (article) => {
     this.setState((state, props) => {
-      // console.log('state: ',state, 'props: ', props, 'article: ', article)
+      console.log('state: ',state, 'props: ', props, 'article: ', article)
       const newCartItem = {
         articleName: article.articleName,
         articleNumber: article.articleNumber,
@@ -112,6 +138,8 @@ class App extends Component {
       return {cart}
     })
   }
+
+
   render() {
     return (
       <div className="main">
@@ -124,6 +152,9 @@ class App extends Component {
         </Box>
         <Box>
           <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
+        </Box>
+        <Box>
+          <CartDisplay currentUser={this.state.currentUser} cart={this.state.cart}/>  
         </Box>
         <Box>
           <Articles  className="articles" currentUser={this.state.currentUser} cart={this.state.cart} putToCart={this.putToCart}/>

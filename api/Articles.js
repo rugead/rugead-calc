@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, Wrapper } from '../css/Buttons'
-import math from 'mathjs'
+
 
 const Content = styled.div`
   background:  url(${props => props.img}) no-repeat;
@@ -9,6 +9,7 @@ const Content = styled.div`
   font-weight: bold;
   height: 7em;
   width: 7em;
+  cursor: pointer;
 `
 
 
@@ -89,9 +90,7 @@ class Articles extends React.Component {
         {article.articleName}
       </Content>
     )
-    const warenkorb = this.state.cart.map(x => {
-              return x.articleName
-            })
+
     return <div> 
 
 

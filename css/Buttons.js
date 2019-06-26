@@ -26,6 +26,16 @@ const Button = styled.button`
   }
 `;
 
+const CartRow = styled.div(props => ({
+    width: '11em',
+  })
+)
+
+const CartList = styled.div(props => ({
+    background: props.background,
+    width: '12em',
+  })
+)
 const Wrapper = styled.div`
   // padding: 0.5em;
   // border: solid 1px grey;
@@ -70,4 +80,4 @@ const Result = styled.div`
   background: darkorange;
   align-self: auto;
 `;
-export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input, Result }
+export { Button, Wrapper, Box, CurrentUserWrapper, Board, Input, Result, CartRow, CartList }
