@@ -49,39 +49,41 @@ class Articles extends React.Component {
   // props: {userName: "verkäufer eins", userColor: "", userNumber: "1111"}
   // {articleName: "Semmel", articleNumber: 1000, articlePrice: 0.4, articleImage: ttps://cdn.jsdelivr.net/gh/rugead/rugead-calc@master/images/xsemmel.jpg"…}
 
-  putToCart = (article) => {
-    this.setState((state, props) => {
-      // console.log('state: ',state, 'props: ', props, 'article: ', article)
-      const newCart = {
-        userName: props.currentUser.userNumber,
-        userNumber: props.currentUser.userNumber,
-        id: props.currentUser.userNumber + '#' + Date.now() ,
-        timeStamp: Date.now(),
-        articles: []
-      }
-      const newCartItem = {
-        articleName: article.articleName,
-        articleNumber: article.articleNumber,
-        articlePrice: article.articlePrice,
-        articleQuantity: 1 ,
-        articleSum: article.articlePrice,
-        userName: props.currentUser.userNumber,
-        userNumber: props.currentUser.userNumber,
-        id: props.currentUser.userNumber + '#' + Date.now() ,
-        timeStamp: Date.now(),
-      }
-      const cart = [...state.cart, newCartItem]
-      // console.log('newCartItem: ', newCartItem)
-      // console.log('cart2: ', cart)
-      return {cart}
-    })
-  }
+  // putToCart = (article) => {
+  //   this.setState((state, props) => {
+  //     // console.log('state: ',state, 'props: ', props, 'article: ', article)
+  //     console.log('props: ', props)
+  //     // const newCart = {
+  //     //   userName: props.currentUser.userNumber,
+  //     //   userNumber: props.currentUser.userNumber,
+  //     //   id: props.currentUser.userNumber + '#' + Date.now() ,
+  //     //   timeStamp: Date.now(),
+  //     //   articles: []
+  //     // }
+  //     const newCartItem = {
+  //       articleName: article.articleName,
+  //       articleNumber: article.articleNumber,
+  //       articlePrice: article.articlePrice,
+  //       articleQuantity: 1 ,
+  //       articleSum: article.articlePrice,
+  //       userName: props.currentUser.userNumber,
+  //       userNumber: props.currentUser.userNumber,
+  //       id: props.currentUser.userNumber + '#' + Date.now() ,
+  //       timeStamp: Date.now(),
+  //     }
+  //     const cart = [...state.cart, newCartItem]
+  //     // console.log('newCartItem: ', newCartItem)
+  //     // console.log('cart2: ', cart)
+  //     return {cart}
+  //   })
+  // }
+
 
   render () {
     const articleList = articleData.map( article => 
       <Content 
         key={article.articleNumber}
-        onClick={() => this.putToCart(article) }
+        onClick={() => this.props.putToCart(article) }
         img={article.articleImage}
       >
         {article.articleName}
@@ -92,7 +94,7 @@ class Articles extends React.Component {
             })
     return <div> 
 
-  warenkorb:  {console.log('cart: ', warenkorb)}     
+
             <h3>Artikel</h3>
             {articleList}
           </div>

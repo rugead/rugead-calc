@@ -16,17 +16,33 @@ class App extends Component {
       currentUser: {},
       userList: [],
       loggedInUsers: [],
+      cart:[]
     };
   }
 
   setCurrentUser = (selectedUser) => {
-    console.log('setCurrentUser: ', selectedUser)
-     this.setState( (state) =>   {    
-       return { currentUser: {
+    this.setState( (state) =>   {    
+      const currentUser = {
           userName: selectedUser.userName,
           userColor: selectedUser.color,
           userNumber: selectedUser.number
-       }}
+        }
+
+      const newCartUser =  {
+          userName: selectedUser.userName,
+          userNumber: selectedUser.number,
+          id: selectedUser.number + '#' + Date.now() ,
+          timeStamp: Date.now(),
+          articles: [],
+        }
+
+      if (this.state.cart.find(cartUser => cartUser.userNumber === selectedUser.number)){
+        const cart = [...state.cart]
+      } else {
+        const cart = [...state.cart, newCartUser]
+      }
+
+      return { cart, currentUser }
     })
   }
 
@@ -60,9 +76,31 @@ class App extends Component {
     })
   }
 
+ putToCart = (article) => {
+   //find 
+    this.setState((state, props) => {
+      console.log('state: ',state, 'props: ', props, 'article: ', article)
+      const newCartItem = {
+        articleName: article.articleName,
+        articleNumber: article.articleNumber,
+        articlePrice: article.articlePrice,
+        articleQuantity: 1 ,
+        articleSum: article.articlePrice,
+        userName: this.state.currentUser.userNumber,
+        userNumber: this.state.currentUser.userNumber,
+        id: this.state.currentUser.userNumber + '#' + Date.now() ,
+        timeStamp: Date.now(),
+      }
+      const cart = [...state.cart, newCartItem]
+      return {cart}
+    })
+  }
   render() {
     return (
       <div className="main">
+      {console.log('setCartUser: ', this.state.cart, )}
+      {console.log('setCurrentUser: ', this.state.currentUser, )}
+
         <Box>
           <LoggedInUsers
             loggedInUsers={this.state.loggedInUsers} 
@@ -74,7 +112,7 @@ class App extends Component {
           <Calc className="calc" logUserIn={this.logUserIn} currentUser={this.state.currentUser} />    
         </Box>
         <Box>
-          <Articles  className="articles" currentUser={this.state.currentUser}/>
+          <Articles  className="articles" currentUser={this.state.currentUser} cart={this.state.cart} putToCart={this.putToCart}/>
         </Box>    
       </div> 
     );
