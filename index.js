@@ -91,15 +91,28 @@ class App extends Component {
         id: this.state.currentUser.userNumber + '#' + Date.now() ,
         timeStamp: Date.now(),
       }
-      const cart = [...state.cart, newCartItem]
+      const cart = state.cart.map((item, index) => {
+        console.log('item.userNumber: ', item.userNumber)
+        console.log('this.state.currentUser.userNumber: ', this.state.currentUser.userNumber)
+        if (item.userNumber === this.state.currentUser.userNumber) {
+          // [...state.loggedInUsers, result]
+          item.articles = item.articles.concat(newCartItem) 
+          console.log('item1', item.articles, newCartItem)
+          return item
+        } else {
+          console.log('item2', item)
+          return item
+        }
+      })
+      // const cart = [...state.cart, newCartItem]
       return {cart}
     })
   }
   render() {
     return (
       <div className="main">
-      {console.log('setCartUser: ', this.state.cart, )}
-      {console.log('setCurrentUser: ', this.state.currentUser, )}
+      {console.log('Cart: ', this.state.cart, )}
+      {console.log('CurrentUser: ', this.state.currentUser, )}
 
         <Box>
           <LoggedInUsers
