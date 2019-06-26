@@ -49,14 +49,15 @@ class App extends Component {
   logUserIn = (numberString) => {
     const result = salesPeopleData.find(item => item.number === numberString)
     if (!result) {
-      console.log('n: ', numberString, result.number)
+      console.log('n: ', numberString)
       alert('Kein Bediener mit dieser Nummer vorhanden!')
       return
     }
     this.setState( (state) => {
       // console.log('result', result)
-      if (result) {
+      if (state.loggedInUsers.find( item => item.number === numberString)) {
         const loggedInUsers = [...state.loggedInUsers ]
+        alert('Bediener schon angemeldet')
       } else {
         const loggedInUsers = [...state.loggedInUsers, result]
       }
