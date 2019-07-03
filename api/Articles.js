@@ -4,12 +4,17 @@ import { Button, Wrapper } from '../css/Buttons'
 
 
 const Content = styled.div`
+  display: flex;
+  border: solid 1px grey
   background:  url(${props => props.img}) no-repeat;
   background-size: 7em 7em ;
   font-weight: bold;
   height: 7em;
   width: 7em;
   cursor: pointer;
+  align-items: center;
+  margin: 5px;
+  justify-content: center;
 `
 
 

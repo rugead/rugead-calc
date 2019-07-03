@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Button, Wrapper } from '../css/Buttons'
 
 const SalesPeopleWrapper = styled(Wrapper)`
-  flex-direction: column;
-  background-color: darkgreen;
-  width: 7em;
+  background-color: lightgreen;
+  width: 12em;
+
 `;
 
 const salesPeopleData = [
@@ -15,13 +15,14 @@ const salesPeopleData = [
   { userName: 'verkäufer vier', number: '4444', color: '' },
 ]
 
+
 const SalesPeople = (props) => {
   const salesPeopleList = salesPeopleData.map(x =>
-    <Button key={x.number} onClick={() => props.onClick(x)} >
-      {x.userName} 
-    </Button>
+    <div key={x.number} >
+      Bedienername:<br />{x.userName }<br />Bedienernummer<br />{ x.number} 
+    </div>
   )
-  return <SalesPeopleWrapper className="sales-people"> { salesPeopleList } </SalesPeopleWrapper>
+  return <SalesPeopleWrapper className="sales-people"> Bitte Bedienernummer eingeben: { salesPeopleList } </SalesPeopleWrapper>
  }
 
 export {salesPeopleData}

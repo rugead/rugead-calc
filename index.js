@@ -144,6 +144,9 @@ class App extends Component {
     return (
       <div className="main">
         <Box>
+        
+
+          <SalesPeople /> 
           <LoggedInUsers
             loggedInUsers={this.state.loggedInUsers} 
             setUserColor={this.setUserColor}
@@ -158,7 +161,8 @@ class App extends Component {
         </Box>
         <Box>
           <Articles  className="articles" currentUser={this.state.currentUser} cart={this.state.cart} putToCart={this.putToCart}/>
-        </Box>    
+        </Box>
+             
       </div> 
     );
   }
